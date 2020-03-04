@@ -3,17 +3,29 @@ from app.models.database import Base
 from datetime import datetime
 
 
-class OnegaiContent(Base):
-    __tablename__ = 'onegaicontents'
+class Member(Base):
+    __tablename__ = 'member'
     id = Column(Integer, primary_key=True)
-    title = Column(String(128), unique=True)
-    body = Column(Text)
-    date = Column(DateTime, default=datetime.now())
+    name = Column(String(128), unique=True)
+    twitter = Column(String(128), unique=True)
 
-    def __init__(self, title=None, body=None, date=None):
-        self.title = title
-        self.body = body
-        self.date = date
+    def __init__(self, name=None, twitter=None):
+        self.name = name
+        self.twitter = twitter
 
     def __repr__(self):
-        return '<Title %r>' % (self.title)
+        return '<Title %r>' % (self.name)
+
+#以下を追加
+class News(Base):
+    __tablename__ = 'news'
+    id = Column(Integer, primary_key=True)
+    date = Column(String(128), unique=True)
+    text = Column(String(256), unique=True)
+
+    def __init__(self, date=None, text=None):
+        self.date = date
+        self.text = text
+
+    def __repr__(self):
+        return '<Name %r>' % (self.date)

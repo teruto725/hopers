@@ -1,0 +1,20 @@
+{% extends "application.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/static/css/news.css">
+{% endblock %}
+
+{% block body %}
+<div class = "container">
+    {% for news in all_news %}
+    <div class="card news">
+        <div class="card-header card-date">
+            {{news.date}}
+        </div>
+        <div class="card-body ">
+            <h4 class="card-title">{{news.text}}</h4>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

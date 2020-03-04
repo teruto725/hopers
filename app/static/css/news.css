@@ -1,0 +1,9 @@
+.news{
+    background-color: darkgrey;
+    background-color: rgba(66, 66, 66, 0.534);
+    color:whitesmoke;
+    margin-bottom: 1%;
+}
+.card-date{
+    background-color: rgb(66, 66, 66);
+}
