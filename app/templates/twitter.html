@@ -1,0 +1,16 @@
+{% extends "application.html" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/static/css/twitter.css">
+{% endblock %}
+
+{% block body %}
+<a class="twitter-timeline" data-width="250" data-height="300" href="https://twitter.com/good_idiots?ref_src=twsrc%5Etfw">Tweets by good_idiots</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<form method="post" action="/send" enctype="multipart/form-data">
+    <input type="file" id="img_file" name="img_file" class="col-sm-4">
+    <input type="submit" value="送信" class="btn">
+  </form>
+    {% if img_url %}
+  <p><img src="{{ img_url }}"></p>
+    {% endif %}
+{% endblock %}

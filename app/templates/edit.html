@@ -4,10 +4,18 @@
 
 {% block body %}
 <h1>管理者画面</h1>
+
+{% if alert %}
+<div class="alert alert-secondary" role="alert">
+    <strong>{{ alert }}</strong> 
+</div>
+{% endif %}
+
+
 <a href="{{url_for('top')}}">サイトリンク</a>
 <h2>Member</h2>
 <h3>追加</h3>
-<form action="/member_add" method="POST">
+<form action="/member_add" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" name="name" class="form-control" placeholder="Name">
@@ -16,6 +24,10 @@
         <label for="Twitter">Twitter:</label>
         <input type="text" name="twitter" class="form-control" placeholder="Twitter_url">
     </div>
+    <div class="form-group">
+        <label for="member_image">画像(サイズ:225*225,拡張子:png):</label>
+        <input type="file" id="member_image" name="member_image" >
+    </div> 
     <div class="form-group">
         <input type="submit" value="追加">
     </div>

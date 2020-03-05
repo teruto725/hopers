@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block body %}
+
+
 <div class="container-fluid member-list">
     <div class = "row">
         {% for member in all_member %}
@@ -12,9 +14,9 @@
             <div class="card-body">
                 <p class="card-text name">{{member.name}}</p>
             </div>
-            <img class="img-thumbnail icon" src="/static/images/sample.png" alt="Thumbnail image">
+            <img class="img-thumbnail icon" src="/static/member_images/{{member.id }}.png" alt="Thumbnail image">
             <div class="card-body">
-                <p class="card-text ind-discription">{{member.twitter}}</p>
+                <p class="card-text ind-discription">Twitter: {{member.twitter}}</p>
             </div>
         </div>
         {% endfor %}
