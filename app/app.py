@@ -5,10 +5,11 @@ from app.models.models import News
 from app.models.database import db_session
 from datetime import datetime
 from werkzeug import secure_filename
+from app import key 
 import os
 #Flaskオブジェクトの生成
 app = Flask(__name__)
-
+app.secret_key = key.getSessionKey()
 
 ### 基本ページ
 @app.route("/top")
@@ -23,7 +24,7 @@ def member():
 @app.route("/news")
 def news():
     all_news = News.query.all()
-    all_news = sorted(all_news, key=lambda x:x['date'])
+    all_news = sorted(all_news, key=lambda u: u.date,reverse=True)
     return render_template("news.html",all_news=all_news)
 
 @app.route("/contact")
@@ -43,19 +44,28 @@ def admin():
 @app.route("/admin",methods=["post"])
 def login():
     password = request.form["password"]
-    if password == "0302":
+    if password == key.getAdminKey():
+        session["admin"] = "admin"
         return redirect("/edit")
     else:
         return render_template("admin.html",alert="Not correct pass")
+
+@app.route("/logout")
+def logout():
+    session.pop("admin", None)
+    return redirect("/admin")
+
 
 ### 管理者系処理
 
 @app.route("/edit")
 def edit():
-    all_member = Member.query.all()
-    all_news = News.query.all()
-    return render_template("edit.html", all_member=all_member, all_news=all_news)
-
+    if "admin" in session:
+        all_member = Member.query.all()
+        all_news = News.query.all()
+        return render_template("edit.html", all_member=all_member, all_news=all_news)
+    else :
+        return redirect("/admin")
 ## ファイルアップロード
 UPLOAD_FOLDER = './app/static/member_images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER

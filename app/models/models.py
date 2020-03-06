@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, Text, DateTime
 from app.models.database import Base
 from datetime import datetime
 
-
 class Member(Base):
     __tablename__ = 'member'
     id = Column(Integer, primary_key=True)
@@ -20,8 +19,8 @@ class Member(Base):
 class News(Base):
     __tablename__ = 'news'
     id = Column(Integer, primary_key=True)
-    date = Column(String(128), unique=True)
-    text = Column(String(256), unique=True)
+    date = Column(String(128), unique=False)
+    text = Column(String(256), unique=False)
 
     def __init__(self, date=None, text=None):
         self.date = date

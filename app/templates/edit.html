@@ -12,21 +12,29 @@
 {% endif %}
 
 
-<a href="{{url_for('top')}}">サイトリンク</a>
+<h3>
+    <a href="{{url_for('top')}}" target="_blank">サイトリンク</a>
+</h3>
+<h3>
+<a href="{{url_for('logout')}}">ログアウト</a>
+</h3>
 <h2>Member</h2>
 <h3>追加</h3>
+埋め込みtwitterタグは
+<a href="https://publish.twitter.com/" target="_blank">ここから</a>
+取得してね。(height=200,width=240とすること)
 <form action="/member_add" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" name="name" class="form-control" placeholder="Name">
     </div>
     <div class="form-group">
-        <label for="Twitter">Twitter:</label>
+        <label for="Twitter">埋め込みtwitterタグ:</label>
         <input type="text" name="twitter" class="form-control" placeholder="Twitter_url">
     </div>
     <div class="form-group">
         <label for="member_image">画像(サイズ:225*225,拡張子:png):</label>
-        <input type="file" id="member_image" name="member_image" >
+        <input type="file" name="member_image" >
     </div> 
     <div class="form-group">
         <input type="submit" value="追加">

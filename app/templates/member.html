@@ -16,7 +16,7 @@
             </div>
             <img class="img-thumbnail icon" src="/static/member_images/{{member.id }}.png" alt="Thumbnail image">
             <div class="card-body">
-                <p class="card-text ind-discription">Twitter: {{member.twitter}}</p>
+                    {{member.twitter|safe}}
             </div>
         </div>
         {% endfor %}
