@@ -2,6 +2,7 @@
 ## 概要
 flaskでwebサイト作った。  
 簡単なデータベースとbootstrapによるレスポンシブなデザイン。
+管理者ページからメンバーとニュースの追加、削除ができる。
 python==3.7.6
 ## demo
 ページトップ: https://flask-app-hopers.herokuapp.com/top  
