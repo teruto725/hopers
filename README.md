@@ -2,6 +2,7 @@
 ## 概要
 flaskでwebサイト作った。  
 簡単なデータベースとbootstrapによるレスポンシブなデザイン。
+python==3.7.6
 ## demo
 ページトップ: https://flask-app-hopers.herokuapp.com/top  
 管理者用ページ: https://flask-app-hopers.herokuapp.com/admin
